@@ -1,0 +1,36 @@
+Alberi binari di ricerca
+Natura : foglie, rami, radice
+Informatica : radice, rami, foglie
+O Nodo :
+-Arietà : numero di figli possibili
+Figli -> elenco di nodi
+Parenti -> o Nodo
+Ci sono alberi binari, ternaru, quaternari
+
+
+Profondità :
+Radice -> profondità 0
+figlio/i radice -> profondità 1
+...
+
+
+Quanti Nodi ci sono al livello 0? -> 1
+Quanti Nodi ci sono al livello 1? -> 2
+Quanti Nodi ci sono al livello 2? -> 4
+Quanti Nodi ci sono al livello 3? -> 8
+Quanti Nodi ci sono al livello 4? -> 16
+N = 2^(h) - 1                                 //h -> log2(n)
+Sempre: N <= 2^(h)
+
+Un albero è completo se e solo se ha esattamente 2^(h) nodi, dove h è l'altezza dell'albero.
+
+Un albero si dice bilanciato se il sottoalbero sinistro e il sottoalbero destro differiscono in altezza di almeno 1.
+
+SottoAlberi:
+Ogni nodo ha i suoi sottoalberi, che sono i nodi che sono figli di quel nodo. Essi si distinguono in sottoalberi destri e sottoalberi sinistri.
+
+
+Albero binario di ricerca: 
+BST - Binary Search Tree
+        ____
+    ____    ____

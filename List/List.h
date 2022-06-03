@@ -19,6 +19,9 @@ class List {
         void insertHead(T val);
         void insertTail(T val);
         void insertInOrder(T val);
+        void removeHead();
+        void removeTail();
+        void remove(T val);
 
         friend ostream& operator << (ostream& out, const List<T> &list) {
             out << "List head: " << list.head << endl;
@@ -107,5 +110,64 @@ void List<T> :: insertInOrder(T val) {
     NodeList<T>* toInsert = new NodeList<T> (val);
     toInsert -> next = ptr -> next;
     ptr -> next = toInsert;
+}
+
+template <typename T>
+void List<T> :: removeHead() {
+    if(this -> isEmpty()) {
+        cout << "Is empty!!" << endl;
+        return;
+    }
+
+    NodeList<T>* temp = head;
+    head = head -> next;
+}
+
+template <typename T>
+void List<T> :: removeTail() {
+    if(this -> isEmpty()) {
+        cout << "Is empty!!" << endl;
+        return;
+    }
+
+    NodeList<T>* curr = head;
+    NodeList<T>* prev = nullptr;
+
+    while(curr -> next) {
+        prev = curr;
+        curr = prev -> next;
+    }
+
+    prev -> next = nullptr;
+    delete curr;
+}
+
+template <typename T>
+void List<T> :: remove(T val) {
+	if(this->isEmpty()) {
+		cout << "Empty list!" << endl;
+		return;
+	}
+
+    if(head->val == val) {
+        this->removeHead();
+        return;
+    }
+
+    Node<T> *cur = head;
+	Node<T> *prev = nullptr;
+
+    while(cur->next && cur->val != val) {
+		prev = cur;
+		cur = cur->next;
+	}
+		
+    if(!(cur->next) && cur->val != val) {
+        cout << "Element with value " << val << "not found" << endl;
+        return;
+    }
+    
+    prev->next = cur->next;
+    delete cur;
 }
 #endif
