@@ -30,7 +30,6 @@ class List {
                 out << "\t" << *ptr << endl;
                 ptr = ptr -> getNext();
             }
-
             return out;
         }
 };
@@ -154,8 +153,8 @@ void List<T> :: remove(T val) {
         return;
     }
 
-    Node<T> *cur = head;
-	Node<T> *prev = nullptr;
+    NodeList<T> *cur = head;
+	NodeList<T> *prev = nullptr;
 
     while(cur->next && cur->val != val) {
 		prev = cur;

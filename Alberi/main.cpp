@@ -8,5 +8,4 @@ int main() {
     b.insert(2);
     b.insert(4);
     b.insert(6);
-
 }
