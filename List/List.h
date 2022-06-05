@@ -15,6 +15,7 @@ class List {
         List();
         bool isEmpty();
         NodeList<T>* getHead() const;
+        NodeList<T>* getTail() const;
         void insert(T val);
         void insertHead(T val);
         void insertTail(T val);
@@ -62,6 +63,15 @@ void List<T> :: insertHead(T val) {
 template <typename T>
 NodeList<T>* List<T> :: getHead() const {
     return head;
+}
+
+template <typename T>
+NodeList<T>* List<T> :: getTail() const {
+    NodeList<T>* ptr = head;
+    while(ptr -> next != nullptr) {
+        ptr = ptr -> next;
+    }
+    return ptr;
 }
 
 template <typename T>

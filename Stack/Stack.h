@@ -15,6 +15,7 @@ class Stack : protected List<T> {
         Stack() : List<T>() {};
         bool isEmpty(); 
         NodeList<T>* top();
+        NodeList<T>* bot();
         void push(T val);
         NodeList<T>* pop();
 
@@ -35,6 +36,14 @@ NodeList<T>* Stack<T> :: top() {
         return nullptr;
 
     return List<T> :: getHead();
+}
+
+template <typename T>
+NodeList<T>* Stack<T> :: bot() {
+    if(isEmpty()) {
+        return nullptr;
+    }
+    return List<T> :: getTail();
 }
 
 template <typename T>
