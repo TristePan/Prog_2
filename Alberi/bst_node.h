@@ -9,24 +9,32 @@ class BSTNode {
         T key;
         BSTNode<T>* left;
         BSTNode<T>* right;
+        BSTNode<T>* parent;
+        bool verbose = false;
 
         template <typename U>
         friend class BST;
 
     public:
         //Costructor
-        BSTNode(T key) : key(key);
+        BSTNode(T key, bool verbose = false);
 
         void setLeft(BSTNode<T>* left);
         void setRight(BSTNode<T>* right);
+        void setParent(BSTNode<T>* parent);
+        void setKey(T key);
         BSTNode<T>* getLeft();
         BSTNode<T>* getRight();
-        void setKey(T key);
+        BSTNode<T>* getParent();
         T getKey();
         
 
-        friend std :: ostream& oeprator <<(std :: ostream& out, BSTNode<T>& node) {
-            out << "BSTNode@" << &node << "Key = " << node.key << " Left = " << node.left << " Right = " << node.right;
+        friend std :: ostream& operator <<(std :: ostream& out, BSTNode<T>& node) {
+            if(node.verbose) {
+                out << "BSTNode@" << &node << "Key = " << node.key << " Left = " << node.left << " Right = " << node.right << " Parent = " << node.parent;
+            } else {
+                out << "BSTNode key=" << node.key;
+            }
             return out;
         }
 
@@ -39,9 +47,10 @@ class BSTNode {
 };
 
 template <typename T>
-BSTNode<T> :: BSTNode(T key) : key(key) {
+BSTNode<T> :: BSTNode(T key, bool verbose = false) : key(key), verbose(verbose) {
     left = nullptr;
     right = nullptr;
+    parent = nullptr;
 }
 
 template <typename T>
@@ -55,6 +64,16 @@ void BSTNode<T> :: setRight(BSTNode<T>* right) {
 }
 
 template <typename T>
+void BSTNode<T> :: setKey(T key) {
+    this -> key = key;
+}
+
+template <typename T>
+void BSTNode<T> :: setParent(BSTNode<T>* parent) {
+    this -> parent = parent;
+}
+
+template <typename T>
 BSTNode<T>* BSTNode<T> :: getLeft() {
     return left;
 }
@@ -64,14 +83,15 @@ BSTNode<T>* BSTNode<T> :: getRight() {
     return right;
 }
 
-template <typename T>
-void BSTNode<T> :: setKey(T key) {
-    this -> key = key;
-}
 
 template <typename T>
 T BSTNode<T> :: getKey() {
     return key;
+}
+
+template <typename T>
+BSTNode<T>* BSTNode<T> :: getParent() {
+    return parent;
 }
 
 #endif
